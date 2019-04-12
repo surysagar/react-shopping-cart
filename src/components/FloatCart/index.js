@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
+//import { counter } from '../../services/counter/actions';
 import { loadCart, removeProduct } from '../../services/cart/actions';
 import { updateCart } from '../../services/total/actions';
 import CartProduct from './CartProduct';
@@ -91,7 +92,7 @@ class FloatCart extends Component {
   };
 
   render() {
-    const { cartTotal, cartProducts, removeProduct } = this.props;
+    const { reduxCounter, cartTotal, cartProducts, removeProduct } = this.props;
 
     const products = cartProducts.map(p => {
       return (
@@ -107,6 +108,7 @@ class FloatCart extends Component {
 
     return (
       <div className={classes.join(' ')}>
+      <span style={{color:'white'}}>sagar {reduxCounter} </span>
         {/* If cart open, show close (x) button */}
         {this.state.isOpen && (
           <div
@@ -116,7 +118,6 @@ class FloatCart extends Component {
             X
           </div>
         )}
-
         {/* If cart is closed, show bag with quantity of product and open cart action */}
         {!this.state.isOpen && (
           <span
@@ -181,7 +182,8 @@ const mapStateToProps = state => ({
   cartProducts: state.cart.products,
   newProduct: state.cart.productToAdd,
   productToRemove: state.cart.productToRemove,
-  cartTotal: state.total.data
+  cartTotal: state.total.data,
+  reduxCounter: state.reduxCounter.reduxCounter
 });
 
 export default connect(

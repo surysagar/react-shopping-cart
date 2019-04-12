@@ -32,6 +32,7 @@ class CartProduct extends Component {
     }
 
     return (
+      <div>
       <div className={classes.join(' ')}>
         <div
           className="shelf-item__del"
@@ -54,6 +55,7 @@ class CartProduct extends Component {
         <div className="shelf-item__price">
           <p>{`${product.currencyFormat}  ${formatPrice(product.price)}`}</p>
         </div>
+      </div>
       </div>
     );
   }
